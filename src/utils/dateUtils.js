@@ -1,5 +1,5 @@
 export function parseDateStr(dateStr, fmt) {
-  const p = dateStr.split('/[\/\.]/');
+  const p = dateStr.includes('/') ? dateStr.split('/') : dateStr.split('.');
   if (p.length < 3) return null;
   const day   = parseInt(fmt === 'MM/DD' ? p[1] : p[0]);
   const month = parseInt(fmt === 'MM/DD' ? p[0] : p[1]) - 1;

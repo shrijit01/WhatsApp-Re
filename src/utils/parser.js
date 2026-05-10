@@ -8,10 +8,10 @@
  *         Multi-line messages (continuation lines)
  */
 
-const iOSMsg = /^\[(\d{1,2}[\/\.]\d{1,2}[\/\.]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s?[AaPp][Mm])?)\]\s(.+?):\s(.*)$/;
-const androidMsg = /^(\d{1,2}[\/\.]\d{1,2}[\/\.]\d{2,4}),\s*(\d{1,2}:\d{2}(?:\s?[AaPp][Mm])?)\s[-–]\s(.+?):\s(.*)$/;
-const iOSSys = /^\[(\d{1,2}[\/\.]\d{1,2}[\/\.]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s?[AaPp][Mm])?)\]\s(.*)$/;
-const androidSys = /^(\d{1,2}[\/\.]\d{1,2}[\/\.]\d{2,4}),\s*(\d{1,2}:\d{2}(?:\s?[AaPp][Mm])?)\s[-–]\s(.*)$/;
+const iOSMsg = /^\[(\d{1,2}[/.]\d{1,2}[/.]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s?[AaPp][Mm])?)\]\s(.+?):\s(.*)$/;
+const androidMsg = /^(\d{1,2}[/.]\d{1,2}[/.]\d{2,4}),\s*(\d{1,2}:\d{2}(?:\s?[AaPp][Mm])?)\s[-–]\s(.+?):\s(.*)$/;
+const iOSSys = /^\[(\d{1,2}[/.]\d{1,2}[/.]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s?[AaPp][Mm])?)\]\s(.*)$/;
+const androidSys = /^(\d{1,2}[/.]\d{1,2}[/.]\d{2,4}),\s*(\d{1,2}:\d{2}(?:\s?[AaPp][Mm])?)\s[-–]\s(.*)$/;
 const EDITED_RE = /\s*<This message was edited>\s*$/i;
 
 function stripEdited(t) {
@@ -76,7 +76,7 @@ export function groupByDate(msgs) {
 export function detectDateFormat(msgs) {
   let firstMax = 0, secondMax = 0;
   for (const m of msgs) {
-    const p = m.date.split(/[\/\.]/);
+    const p = m.date.split(/[/.]/);
     if (p.length >= 2) {
       firstMax  = Math.max(firstMax,  parseInt(p[0]) || 0);
       secondMax = Math.max(secondMax, parseInt(p[1]) || 0);
