@@ -41,15 +41,9 @@ export default function ChatView({ messages, senders, myName, chatTitle, dateFmt
   const scrollToBottom = () => chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight,    behavior: 'smooth' });
 
   return (
-    <div style={{
-      display: 'flex', flexDirection: 'column', alignItems: 'center',
-      padding: '1.5rem 1rem 3rem', background: 'var(--bg-page)', minHeight: '100vh',
-    }}>
+    <div className="chat-view-page">
       {/* ── Toolbar above phone ── */}
-      <div style={{
-        width: '100%', maxWidth: 420, display: 'flex', justifyContent: 'space-between',
-        alignItems: 'center', marginBottom: '0.9rem', padding: '0 4px',
-      }}>
+      <div className="chat-toolbar">
         <button onClick={onBack} style={{
           background: 'none', border: 'none', cursor: 'pointer',
           fontSize: 13.5, color: 'var(--text-secondary)', padding: 0,
@@ -74,19 +68,17 @@ export default function ChatView({ messages, senders, myName, chatTitle, dateFmt
       </div>
 
       {/* ── Phone frame ── */}
-      <div className="fade-in" style={{
-        width: 390, background: '#1a1a1a', borderRadius: 56,
-        padding: '14px 13px', boxShadow: 'var(--shadow-phone)',
-        position: 'relative', userSelect: 'none',
+      <div className="phone-frame fade-in" style={{
+        background: '#1a1a1a', position: 'relative', userSelect: 'none',
       }}>
         {/* Physical side buttons */}
         {[{ l: -3, t: 110, h: 30 }, { l: -3, t: 150, h: 55 }, { l: -3, t: 215, h: 55 }].map((b, i) => (
-          <div key={i} style={{ position: 'absolute', left: b.l, top: b.t, width: 3, height: b.h, background: '#2a2a2a', borderRadius: '2px 0 0 2px' }} />
+          <div className="phone-side-button" key={i} style={{ position: 'absolute', left: b.l, top: b.t, width: 3, height: b.h, background: '#2a2a2a', borderRadius: '2px 0 0 2px' }} />
         ))}
-        <div style={{ position: 'absolute', right: -3, top: 165, width: 3, height: 72, background: '#2a2a2a', borderRadius: '0 2px 2px 0' }} />
+        <div className="phone-side-button" style={{ position: 'absolute', right: -3, top: 165, width: 3, height: 72, background: '#2a2a2a', borderRadius: '0 2px 2px 0' }} />
 
         {/* Screen */}
-        <div style={{ borderRadius: 44, overflow: 'hidden', background: '#000', display: 'flex', flexDirection: 'column', height: 760 }}>
+        <div className="phone-screen" style={{ overflow: 'hidden', background: '#000', display: 'flex', flexDirection: 'column' }}>
 
           {/* Status bar */}
           <div style={{ background: WA_GREEN, padding: '13px 22px 5px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
